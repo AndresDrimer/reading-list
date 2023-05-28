@@ -1,22 +1,16 @@
 "use client"
-import React, { createContext, useState } from 'react'
-import { nanoid } from "nanoid"
-import book_db from '@/app/dbs/book_db';
+import React, { createContext, useReducer } from 'react'
 
+import book_db from '@/app/dbs/book_db';
+import { bookReducer } from '../app/reducers/bookReducer'
 export const BookContext = createContext();
 
 export default function BookContextWrapper(props) {
-    const [books, setBooks] = useState(book_db)
+    //const [books, setBooks] = useState(book_db)
+const [books, dispatch] = useReducer(bookReducer, [])
 
-
-    const addBook = (title, author) => {
-      setBooks([...books, { title, author }])
-    }
-    const removeBook = (id) => {
-      setBooks(books.filter(it=> it.id !== id))
-    }
   return (
-    <BookContext.Provider value={{ books, addBook, removeBook }}>
+    <BookContext.Provider value={{ books, dispatch }}>
         {props.children}
     </BookContext.Provider>
   )

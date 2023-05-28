@@ -10,7 +10,7 @@ import { BsFileMinus, BsFileMinusFill, BsPlus } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
 
 export default function BookDetails({ book }) {
-  const { removeBook } = useContext(BookContext);
+  const { dispatch } = useContext(BookContext);
   const { isAlertOn, toggleAlert } = useContext(AlertContext);
   const [showMoreText, setShowMoreText] = useState(false)
 
@@ -27,10 +27,11 @@ export default function BookDetails({ book }) {
       >
         <h2>
           <span className="text-xl pr-6 leading-4 drop-shadow-lg">
-            {book.title.slice(0, -1)}
+           {/*book.title.slice(0, -1)*/}
+           {book.title}
           </span>
           <br />{" "}
-          <span className="text-gray-300 text-xs">de {book.author}</span>
+          <span className="text-gray-300 text-xs ">de {book.author}</span>
         </h2>
         <div className="my-4">
           <Image src={poster} className="rounded drop-shadow-lg" alt="poster" />
@@ -74,7 +75,7 @@ export default function BookDetails({ book }) {
 
             <button
               className="bg-red-800 rounded-full p-2 scale-75 hover:scale-105"
-              onClick={() => removeBook(book.id)}
+              onClick={() => dispatch({type: "REMOVE_BOOK", id: book.id})}
             >
               <FiTrash2 />
             </button>
