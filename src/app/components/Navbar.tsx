@@ -1,12 +1,13 @@
 "use client"
 import { useContext } from 'react'
-import { BookContext } from '../../contexts/BookContext'
+import { TodoContext } from '../../contexts/TodoContext'
 export default function Navbar() {
-    const { books } = useContext(BookContext)
+    const { todos } = useContext(TodoContext)
   return (
     <div className=' text-center text-white bg-slate-700/50 p-4'>
-      <h1 className='text-3xl drop-sahdow-lg'>Libros CDLC</h1>
-      <p className='text-xs mt-2'> {books.length} books listed</p>
+      <h1 className='text-5xl drop-shadow-lg'>Next.js TODO</h1>
+      <h3 className='text-md drop-shadow-lg'>using Context, Reducer and localStorage</h3>
+      <p className='text-xs mt-2 border-2 border-dashed p-2 mx-4'> {todos.length} todos listed</p>
     </div>
   )
 }

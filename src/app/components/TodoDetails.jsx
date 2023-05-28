@@ -1,38 +1,47 @@
 "use client";
-import { FiTrash2 } from "react-icons/fi";
-import { BookContext } from "@/contexts/BookContext";
-import { AlertContext } from "@/contexts/AlertContext";
+
+import { TodoContext } from "@/contexts/TodoContext";
+
 import { useContext, useState } from "react";
-import Alert from "./Alert";
-import poster from "../../../public/TAPA_METMUT_DIGITAL.jpg";
 import Image from "next/image";
-import { BsFileMinus, BsFileMinusFill, BsPlus } from "react-icons/bs";
+
+import { BsPlus } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
+import { FiTrash2 } from "react-icons/fi";
+import poster from "../../../public/TAPA_METMUT_DIGITAL.jpg";
 
-export default function BookDetails({ book }) {
-  const { dispatch } = useContext(BookContext);
-  const { isAlertOn, toggleAlert } = useContext(AlertContext);
-  const [showMoreText, setShowMoreText] = useState(false)
+export default function TodoDetails({ todo }) {
+  const { dispatch } = useContext(TodoContext);
 
-  function handleTrashBin(id) {
-    toggleAlert();
-    console.log("tocado");
-  }
+  const [showMoreText, setShowMoreText] = useState(false);
 
   return (
     <>
       <li
-        key={book.id}
-        className="border-2 rounded text-xs md:text-md p-2 flex  flex-col justify-between px-4 py-4 drop-shadow-lg"
+        key={todo.id}
+        className="border-2 rounded text-xs md:text-md p-2 flex justify-between px-4 py-4 drop-shadow-lg overflow-hidden"
       >
-        <h2>
-          <span className="text-xl pr-6 leading-4 drop-shadow-lg">
-           {/*book.title.slice(0, -1)*/}
-           {book.title}
-          </span>
-          <br />{" "}
-          <span className="text-gray-300 text-xs ">de {book.author}</span>
-        </h2>
+        <div className="max-w-[20ch]">
+          <h2>
+            {" "}
+            <span className="text-xl pr-6 leading-4 drop-shadow-lg break-words">
+              {/*book.title.slice(0, -1)*/}
+              {todo.title}{" "}
+            </span>
+            <br />
+            <span className="text-gray-300 text-xs ">{todo.author}</span>{" "}
+          </h2>
+        </div>
+
+        <button
+          className="w-[30px] h-[30px] bg-red-800 rounded-full p-2 scale-75 hover:scale-105"
+          onClick={() => dispatch({ type: "REMOVE_TODO", id: todo.id })}
+        >
+          {" "}
+          <FiTrash2 />{" "}
+        </button>
+
+        {/*
         <div className="my-4">
           <Image src={poster} className="rounded drop-shadow-lg" alt="poster" />
         </div>
@@ -67,20 +76,15 @@ export default function BookDetails({ book }) {
             <p className="text-gray-400">215p, tapa dura, blahblah</p>
             <p
               className={`text-xs w-[50px] border-2 border-gray-600 rounded-full px-2  ${
-                book.isAvailable ? "" : "line-through text-gray-500 bg-gray-600"
+                todo.isAvailable ? "" : "line-through text-gray-500 bg-gray-600"
               }`}
             >
-              {book.isDigital ? "digital" : "físico"}
+              {todo.isDigital ? "digital" : "físico"}
             </p>
 
-            <button
-              className="bg-red-800 rounded-full p-2 scale-75 hover:scale-105"
-              onClick={() => dispatch({type: "REMOVE_BOOK", id: book.id})}
-            >
-              <FiTrash2 />
-            </button>
+            
           </div>
-        </div>
+        </div>*/}
       </li>
     </>
   );

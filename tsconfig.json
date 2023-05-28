@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/contexts/BookContext.js", "src/app/components/BookDetails.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/contexts/TodoContext.js", "src/app/components/TodoDetails.jsx"],
   "exclude": ["node_modules"]
 }
