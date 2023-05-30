@@ -1,12 +1,10 @@
 "use client"
 import { useContext } from 'react'
-
 import { TodoContext } from '@/contexts/TodoContext'
 
 export default function Alert({id}) {
  
-    //const { removeBook } = useContext(TodoContext)
-console.log(id)
+  console.log(id)
 
   return (
     <div className="flex flex-col items-center justify-center sticky top-0 right-0 z-10 w-full bg-red-800 p-4">

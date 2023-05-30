@@ -19,7 +19,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-  
         <TodoContextWrapper>
           <body className={inter.className}>
             <main className="relative w-full p-10  bg-violet-800 ">
@@ -30,7 +29,6 @@ export default function RootLayout({
             </main>
           </body>
         </TodoContextWrapper>
-
     </html>
   );
 }

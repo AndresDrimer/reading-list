@@ -5,13 +5,19 @@ export const todoReducer = (state, action) => {
     case "ADD_TODO":
         return [...state, {
             title: action.todo.title,
-            author: action.todo.author,
-            id: nanoid()
+            details: action.todo.details,
+            id: nanoid(),
+            isChecked: false
         }]
     case "REMOVE_TODO":
         return state.filter(todo => todo.id!==action.id)
+    case "CHECK_TODO":
+        return state.map(todo => todo.id!==action.id ? todo : {...todo,  isChecked: true } ) 
+        case "UNCHECK_TODO":
+            return state.map(todo => todo.id!==action.id ? todo : {...todo,  isChecked: false } )     
     default:
         return state
+        }
  }
-}
+
 

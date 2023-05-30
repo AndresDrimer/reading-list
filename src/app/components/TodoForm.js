@@ -10,7 +10,7 @@ export default function TodoForm() {
 
     function handleSubmit(e){
       e.preventDefault()
-      dispatch({type: "ADD_TODO", todo: {title: newTodo, author: newTodoDetail}})
+      dispatch({type: "ADD_TODO", todo: {title: newTodo, details: newTodoDetail}})
       setNewTodo("")
       setNewTodoDetail("")
     }
@@ -21,7 +21,7 @@ export default function TodoForm() {
     <h1>Add new Todo</h1>
    <form className='mt-4 flex flex-col space-y-4 px-2 text-left font-normal max-w-md m-auto' onSubmit={handleSubmit}>
    <label>Title: 
-    <input type="text" value={newTodo} name="title" onChange={(e) => setNewTodo(e.target.value)} className='border-2 rounded w-full text-gray-900'/></label>
+    <input type="text" value={newTodo} name="title" required onChange={(e) => setNewTodo(e.target.value)} className='border-2 rounded w-full text-gray-900 '/></label>
 
     <label>Details: 
     <input type="text" value={newTodoDetail} onChange={(e) => setNewTodoDetail(e.target.value)} name="details" className='border-2 rounded w-full text-gray-900'/></label>

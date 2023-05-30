@@ -5,14 +5,15 @@ import TodoDetails from "./TodoDetails";
 
 
 
+
 export default function TodoList() {
   const { todos } = useContext(TodoContext);
 
-
+  console.log("esto:", todos)
   return todos.length ? (   <>
-        <div className="m-auto w-full drop-shadow-lg">
+        <div className="m-auto w-full h-auto drop-shadow-lg">
         
-          <ul className=" flex flex-col space-y-4">
+          <ul className=" flex flex-col space-y-4 justify-center ">
             {todos.map(todo => {
               return (
                 <TodoDetails todo={todo} key={todo.id} />
@@ -22,7 +23,7 @@ export default function TodoList() {
           </ul>
         </div></>
       ) : (
-        <h1>No hay libros papal!!</h1>
+        <h1>No todos to show!!</h1>
       )
    
 }
