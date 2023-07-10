@@ -13,8 +13,8 @@ export const todoReducer = (state, action) => {
         return state.filter(todo => todo.id!==action.id)
     case "CHECK_TODO":
         return state.map(todo => todo.id!==action.id ? todo : {...todo,  isChecked: true } ) 
-        case "UNCHECK_TODO":
-            return state.map(todo => todo.id!==action.id ? todo : {...todo,  isChecked: false } )     
+    case "UNCHECK_TODO":
+        return state.map(todo => todo.id!==action.id ? todo : {...todo,  isChecked: false } )     
     default:
         return state
         }

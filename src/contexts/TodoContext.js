@@ -13,15 +13,13 @@ export default function TodoContextWrapper(props) {
     const localData = localStorage.getItem("todos");
     return localData ? JSON.parse(localData) : [];
   });
-  //el tercer argumento es initial State en lugar del segundo, el segundo seria un fallback de este tercero
-  // convierte el string que hay guardado en localStorage en un objeto javascript al traerlo, para que lo podamos usar como tal
+  //third argument takes Initial State instead of Second One, which stands as a fallback for third one
+  // it turns string in LocalStorage to a JSON, because we need to use in that format to process in javascript
 
-  //
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]); //guarda en localStorage un elemento de key books, que contiene una version pasada a string del contenido actualizado del estado books (de bookReducer)
+  }, [todos]); //  guarda en localStorage un elemento de key books, que contiene una version pasada a string del contenido actualizado del estado books (de bookReducer)
 
-  console.log("from context: : ", todos);
   return (
     <TodoContext.Provider value={{ todos, dispatch }}>
       {props.children}

@@ -22,14 +22,14 @@ export default function TodoDetails({ todo }) {
     <>
       <li
         key={todo.id}
-        className={`border-2 rounded text-xs md:text-md p-2 flex justify-between px-2 py-4 drop-shadow-lg overflow-hidden ${
+        className={`border-2 rounded text-xs md:text-md p-2 flex justify-between px-2 py-4 drop-shadow-lg overflow-hidden bg-white/10 ${
           todo.isChecked ? "bg-green-500/50" : "bg-transparent"
         }`}
       >
         <div>
-          <h2 className="max-w-[20ch] break-all">
+          <h2 className="w-full ">
             <span
-              className={`text-xl pr-6 leading-4 drop-shadow-lg break-words ${
+              className={`text-xl pr-6 leading-4 drop-shadow-lg  ${
                 todo.isChecked && "line-through"
               }`}
             >
