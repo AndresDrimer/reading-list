@@ -1,1 +1,1 @@
-Add typescript to all document
+Github origin: https://github.com/AndresDrimer/reading-list/tree/converted-to-todo
