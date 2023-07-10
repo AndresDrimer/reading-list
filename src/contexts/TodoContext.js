@@ -10,14 +10,16 @@ export default function TodoContextWrapper(props) {
   //const [books, setBooks] = useState(book_db)`
 
     const [todos, dispatch] = useReducer(todoReducer, [], () => {
-    const localData = localStorage.getItem("todos");
+      const localData = typeof window !== "undefined" ? window.localStorage.getItem("todos") : null;
     return localData ? JSON.parse(localData) : [];
   });
   //third argument takes Initial State instead of Second One, which stands as a fallback for third one
   // it turns string in LocalStorage to a JSON, because we need to use in that format to process in javascript
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("todos", JSON.stringify(todos));
+    }
   }, [todos]); //  guarda en localStorage un elemento de key books, que contiene una version pasada a string del contenido actualizado del estado books (de bookReducer)
 
   return (
