@@ -28,3 +28,5 @@ export default function TodoContextWrapper(props) {
     </TodoContext.Provider>
   );
 }
+
+//note that typeof window approach is a way to get this deployment to work, because localStorage can´t work server side and it breaked without it.

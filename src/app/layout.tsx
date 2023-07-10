@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <TodoContextWrapper>
-          <main className="relative w-full p-10  bg-violet-800 ">
+          <main className="relative w-full p-10  bg-violet-800 h-screen">
             <section className=" w-full lg:max-w-[800px] m-auto">
               <Navbar />
               {children}
